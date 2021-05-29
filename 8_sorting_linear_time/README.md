@@ -1,3 +1,11 @@
+Sorting in linear Time:
+
+Count sort
+Radix sort
+Bucket sort
+
+
+# Theorem: Comparison based Sorting needs atleast n*log(n) comparisons.
 proving  nlog(n) is a lower bound for comparison sort.
 Idea:
 a comparison based sorting algorithm is a sequence of comparisons.
@@ -18,15 +26,11 @@ log2(n!) < h # this was not as obvious as thought but yeah
 sum log2(k) < h
 1/4 n log(n) < h
 
-Idea this?
+Idea:
 drop first half of logarithms, who cares. Second half is bigger than 1/4 n log(n)
 1/2*log(n) < log(1/2 * n)
 sqrt(n) < 1/2 n
     n < 1/4 n**2
 i dont know prove by induction or somthing for big n. Idea works i guess.
 
-book says use stirling for finding the some of ln k
-
-
-Quite interesting ideas: Count sort, radix sort, bucket sort
-Lot of problems at the end of the chapter that i didnt do.
+book says use stirling for finding the sum of ln k

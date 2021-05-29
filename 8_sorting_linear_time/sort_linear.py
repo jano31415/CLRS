@@ -1,9 +1,14 @@
 import random
 
+# Idea:
+# If we know that the list only contains very few elements like 1-max_N
+# then we go through the list and count how often each element appears. O(len(arr))
+# then we go through the counts of elements 1-max_N in increasing order and
+# insert as many elements as we counted. O(max_N + len(arr))
 
 # nice stuff. I knew this but it was also easy to implement.
 # quite some memory and the book has an array only solution.
-# this is a little different if you the numbers are objects where we need to carry around.
+# this is a little different if the numbers are objects where we need to carry around.
 # satellite data.
 def count_sort(arr, max_N):
     cache = [0] * (max_N + 1)
@@ -55,6 +60,7 @@ def count_sort_satellite0(arr, max_N):
         count_tot[sort_a] += 1
     return res
 
+
 def count_sort_satellite0_lambda(arr, max_N, lambda_index):
     count_tot = [0] * (max_N + 2)
     get_sort_data = lambda x: int(x[lambda_index])
@@ -91,6 +97,7 @@ def count_sort_satellite_hashmap(arr, val_list):
         res[count_tot[sort_a]] = a
         count_tot[sort_a] += 1
     return res
+
 
 def count_sort_satellite_hashmap_lambda(arr, val_list, lambda_index):
     count_tot = {x: 0 for x in val_list}
@@ -144,10 +151,23 @@ def test_count_satellite():
 #test_count_satellite()
 
 # radix sort
+# Idea:
+# if its numbers/strings then we can sort each digit. If we have a sort that
+# does not change the order if the value is the same and we start from the right!
+# then this works:
+# if we start from right. Sorting on the second digit keeps the order of 12 14.
+# 14 -> 21 -> 12
+# 12 -> 12 -> 14
+# 21 -> 14 -> 21
+# if we start from left: the second digiit completely ruins the first digits sort
+# 14 -> 14 -> 21
+# 12 -> 12 -> 12
+# 21 -> 21 -> 14
+
 # optimal value depends on size of list
 # in a real programming language ofcourse this is implemented with the binary
 # number representation shifts and stuff. I implement it the real way when i know C++
-# no im still a 0 to 9 guy and this looks fun.
+# now im still a 0 to 9 guy and this looks fun.
 
 # for small n this looks faster in O notation being Delta(n) but high constant factors.
 # if we split it into d groups that we sort by count_sort where each group has k possible values
@@ -193,6 +213,13 @@ def test_radix():
 
 
 # bucket sort
+# Idea:
+# if the numbers are uniformaly distirubted then create buckets. Like max_N=100
+# creat buckets 0-10, 10-20, 20-30, 30-40 ...
+# insert each value into its bucket. 27 belongs into 27//10 bucket. O(n).
+# then sort bucket with a small constant sort. O(k**2) and then put the values
+# after each other.
+
 # book claims that the average of square of bucket list sizes is 2 - 1/n
 # and if we sort the bucket lists in k**2 then running time is n * (2- 1/n)
 # O(n)
