@@ -11,3 +11,14 @@ Scalable: can easily be adapted to work for higher load/more data. Important wha
 Maintainability: easy to operate, easy to understand for people maintaining it and easy to extend
 
 ## Chapter 2: Data Models and Query Languages
+
+Rise of SQL in the 80s. Dominant data type until 2010 when NoSQL alternatives grew.
+Criticism of SQL: object-relational mismatch. Usually we deal with objects that need information
+from many different tables and thus we need an Object relational mapping (ORM) to get from the
+relational table structure to the objects that we need in the application.
+
+Alternative document store: e.g. store a json representation of the object. These are usually worse
+with joining/referencing other data.
+
+Graph DataBases: Consisting of nodes and edges and fast traversal of the graph is possible.
+Every node and edge can store additional data key value.
