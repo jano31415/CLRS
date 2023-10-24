@@ -22,3 +22,13 @@ with joining/referencing other data.
 
 Graph DataBases: Consisting of nodes and edges and fast traversal of the graph is possible.
 Every node and edge can store additional data key value.
+
+Cypher: query language for neo4j. You can do queries where you can say follow the edges until you find something.
+Since this path can have different length this is similar to a variable amount of joins in sql which needs recursive join feature.
+
+triple storage: (joe, likes, Anna) only stores subject, predicate, object like edges or attributes of an object.
+
+semantic web: idea to create a standard machine readable format and all websites store their data in
+that format to be easily readable.
+
+## Chapter 3: Storage and Retrieval
