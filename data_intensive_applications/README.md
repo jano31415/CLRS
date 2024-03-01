@@ -32,3 +32,31 @@ semantic web: idea to create a standard machine readable format and all websites
 that format to be easily readable.
 
 ## Chapter 3: Storage and Retrieval
+
+## Chapter 4: Encoding and Evolution
+we often want to make changes to the data/schema/structure but its hard to make an instant switch.
+Especially users might not immediately update. So we need forward and backward compatibility.
+To send objects over the network or write them into a file you need to encode (serialize) them.
+Whats the best way of doing so?
+Serialize the byte object e.g. pickle
+1)you commit to deserialize with the same programming language
+2)the code is going to instantiate arbitrary classes -> security concern
+3)versioning and can be slow e.g. java
+
+Other human readable formats:
+JSON:
+- has problems with large numbers and byte strings (encode base64)
+XML: i hate this format. verbose
+csv: vague
+
+there are binary encodings of json like Messagepack, BSON, BJSON ...
+Messagepack:
+If you want to encode {"user":"foo"}
+you start with 8 for object? and then 1 for one field in json model (user). -> 81
+Then specify with a that a string is next and that it has 4 letters -> a4
+next 4 bytes are asci of the string. dont know by heart.
+then a3 for next string with 3 letters and 3 ascii
+81 a4 12 23 34 45 a3 12 23 34
+integer get something else instead of a but basically this is how it works.
+
+Thrift, Protofol Buffers: binary encoding with schema
