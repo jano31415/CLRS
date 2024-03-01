@@ -60,3 +60,28 @@ then a3 for next string with 3 letters and 3 ascii
 integer get something else instead of a but basically this is how it works.
 
 Thrift, Protofol Buffers: binary encoding with schema
+See thrift_parser.py. Define the schema with type of data and order of fields.
+Then you do not need to repeat the name of every field in the message.
+You can specify the length of the numbers to save some space for small numbers to go to compact encoding.
+We specify the index in the message so that we can send only some fields and also are able to extend.
+(yes i did not implement this)
+
+Avro: we dont specify numbers for the fields. But writer and reader schema can be different!
+either specify the writer schema at the start of a large file
+have version numbers and both applications no for each version number the evolution of the schema
+good for database backup
+
+data outlives code:
+Be careful if an old application is updating a record that some new field the old application doesnt
+know about is not removed since the old code doesnt know about it.
+
+Rest: philosophy
+simple formats, human radable, http features
+Openapi/swagger to define the format
+
+SOAP: using XML enoguh said
+
+RPC: Remote Procedure Call -> like calling a function but somewhere else, idea hiding that this is a network call
+-> network calls are different and fail often you need to anticipate
+- if you dont get a response you dont know if the call succeeded
+- speed slow and varies
